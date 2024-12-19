@@ -6,7 +6,7 @@
 }
 
 body{
-    height: 100vh;
+    height: 96vh;
     width: 100vw;
     background: rgba(138, 81, 252, 1);
 
@@ -39,6 +39,7 @@ select, input{
     line-height: 18px;
     padding-left: 15px;
     margin-bottom: 24px;
+    
 }
 
 input{
@@ -116,4 +117,83 @@ button{
     margin: 15px;
 
 
+}
+
+@media screen and (max-width:540px ) {
+
+.gif{
+    width: 200px;
+}
+
+.container-info{
+    width: 300px;
+}
+
+select, input{
+    margin-bottom:  10px ;
+}
+
+button{
+    margin: 15px 0;
+}
+
+
+}
+
+@media screen and (max-width: 380px) {
+    .gif{
+        width:48px;
+        margin:0 auto 10px ;
+    }
+
+    select, input{
+        height: 30px;
+    }
+
+    img{
+        width: 40px;
+    }
+
+    .vector{
+        width:15px;
+        margin: 5px;
+    }
+
+    .currency{display: none;}
+    .currency-convertendo{display: none;}
+
+ 
+}
+
+@media screen and (max-width: 390px) {
+.gif{
+    width: 180px;
+    margin-top: 10px;
+}
+
+
+    .container-info{
+       height: 69vh;
+    }
+}
+
+@media screen and (max-width:1700px) {
+    .gif{
+        width: 200px;
+        margin: 5px auto;
+    }
+
+    select, input{
+        margin-bottom: 10px;
+    }
+
+    button{
+        margin: 15px auto;
+    }
+
+    .container-info{
+        padding-bottom: 0;
+    }
+
+    
 }
