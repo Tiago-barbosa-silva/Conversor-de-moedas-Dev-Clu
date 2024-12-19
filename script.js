@@ -4,88 +4,288 @@ const conversor = document.querySelector('.button-converter')
 const currencyConverted = document.querySelector('.currency-select-de')
 const currencyConverting = document.querySelector ('.currency-select-para')
 const valueEnd = document.querySelector('.currency-value')
+const valueconverted = document.querySelector ('.currency-value-to-convert')
 
 conversor.addEventListener('click', buttonConverted)
 
-const CURRENCY_OPTIONS = {
-   DOLAR: 6.05,
-   EURO: 6.37,
-   LIBRA: 7.72,
-   REAL: 0.17
-}
+
+
+const dolarTodayReal = 6.27
+const euroTodayReal = 6.5
+const libraTodayReal = 7.9
+
+
+const realTodayDolar = 6.27
+const euroTodayDolar = 0.97
+const libraTodayDolar = 0.79
+
+
+const dolarTodayEuro = 1.04
+const realTodayEuro = 6.5
+const libraTodayEuro = 0.82
+
+
+const dolarTodayLibra = 1.26
+const euroTodayLibra = 1.21
+const realTodayLibra = 7.89
+
 
 
 
 
 function buttonConverted(){
-const valueCurrency = document.querySelector('input').value
+let valueCurrency = document.querySelector('input').value
 
-   if(currencyConverted.value == 'real' && currencyConverting.value == 'dolar'){
-      valueEnd.innerHTML = valueCurrency / CURRENCY_OPTIONS.DOLAR
-   }else if (currencyConverted.value == 'real' && currencyConverting.value == 'euro'){
-      valueEnd.innerHTML = valueCurrency / CURRENCY_OPTIONS.EURO
-   }else if (currencyConverted.value == 'real' && currencyConverting.value == 'libra'){
-      valueEnd.innerHTML = valueCurrency / CURRENCY_OPTIONS.LIBRA
-   }else{
-      valueEnd.innerHTML = valueCurrency
-   }
+//REAL
+if(currencyConverted.value == 'real' && currencyConverting.value == 'dolar'){
+   valueEnd.innerHTML = new Intl.NumberFormat('en-US', {
+      style:'currency',
+      currency:'USD'
+   }).format(valueCurrency / dolarTodayReal)
 
-   if(currencyConverted.value == 'dolar' && currencyConverting.value == 'real'){
-      valueEnd.innerHTML = valueCurrency * CURRENCY_OPTIONS.REAL
-   }else if (currencyConverted.value == 'dolar' && currencyConverting.value == 'libra'){
-      valueEnd.innerHTML = valueCurrency * CURRENCY_OPTIONS.LIBRA
-   }else if (currencyConverted.value == 'dolar' && currencyConverting.value == 'euro'){
-      valueEnd.innerHTML = valueCurrency * CURRENCY_OPTIONS.EURO
-   }
+   valueconverted.innerHTML = new Intl.NumberFormat('pt-BR',{
+      style: 'currency',
+      currency: 'BRL'
+   }).format(valueCurrency)
+  
+}else if(currencyConverted.value == 'real' && currencyConverting.value == 'libra'){
+   valueEnd.innerHTML = new Intl.NumberFormat('en-UK', {
+      style:'currency',
+      currency:'GBP'
+   }).format(valueCurrency / libraTodayReal)
 
-   if(currencyConverted.value == 'libra' && currencyConverting.value == 'real'){
-      valueEnd.innerHTML = valueCurrency * CURRENCY_OPTIONS.REAL
-   }else if (currencyConverted.value == 'libra' && currencyConverting.value == 'dolar'){
-      valueEnd.innerHTML = valueCurrency / CURRENCY_OPTIONS.DOLAR
-   }else if (currencyConverted.value == 'libra' && currencyConverting.value == 'euro'){
-      valueEnd.innerHTML = valueCurrency * CURRENCY_OPTIONS.EURO
-   }
+   valueconverted.innerHTML = new Intl.NumberFormat('pt-BR',{
+      style: 'currency',
+      currency: 'BRL'
+   }).format(valueCurrency)
+  
+}else if(currencyConverted.value == 'real' && currencyConverting.value == 'euro'){
+   valueEnd.innerHTML = new Intl.NumberFormat('de-DE', {
+      style:'currency',
+      currency:'EUR'
+   }).format(valueCurrency / euroTodayReal)
 
-   if(currencyConverted.value == 'euro' && currencyConverting.value == 'real'){
-      valueEnd.innerHTML = valueCurrency * CURRENCY_OPTIONS.REAL
-   }else if (currencyConverted.value == 'euro' && currencyConverting.value == 'dolar'){
-      valueEnd.innerHTML = valueCurrency * CURRENCY_OPTIONS.DOLAR
-   }else if (currencyConverted.value == 'euro' && currencyConverting.value == 'libra'){
-      valueEnd.innerHTML = valueCurrency * CURRENCY_OPTIONS.LIBRA
-   }
+   valueconverted.innerHTML = new Intl.NumberFormat('pt-BR',{
+      style: 'currency',
+      currency: 'BRL'
+   }).format(valueCurrency)
+  
+}else if(currencyConverted.value == 'real' && currencyConverting.value == 'real'){
+   valueEnd.innerHTML = new Intl.NumberFormat('pt-BR', {
+      style:'currency',
+      currency:'BRL'
+   }).format(valueCurrency )
 
+   valueconverted.innerHTML = new Intl.NumberFormat('pt-BR',{
+      style: 'currency',
+      currency: 'BRL'
+   }).format(valueCurrency)
+}
 
+//DOLAR
+if(currencyConverted.value == 'dolar' && currencyConverting.value == 'real'){
+   valueEnd.innerHTML = new Intl.NumberFormat('pt-BR', {
+      style:'currency',
+      currency:'BRL'
+   }).format(valueCurrency * realTodayDolar)
 
-   if(currencyConverting.value == 'real'){
-    valueEnd.innerHTML = new Intl.NumberFormat('pt-BR', {
-              style:'currency',
-              currency:'BRL'
-             }).format(valueCurrency )
-   }
-      if(currencyConverting.value == "dolar"){
-      valueEnd.innerHTML= new Intl.NumberFormat("en-US", {
-           style:"currency",
-           currency:"USD"
-          }).format(valueCurrency )
+   valueconverted.innerHTML = new Intl.NumberFormat('en-US',{
+      style: 'currency',
+      currency: 'USD'
+   }).format(valueCurrency)
+  
+}else if(currencyConverted.value == 'dolar' && currencyConverting.value == 'libra'){
+   valueEnd.innerHTML = new Intl.NumberFormat('en-UK', {
+      style:'currency',
+      currency:'GBP'
+   }).format(valueCurrency * libraTodayDolar)
+
+   valueconverted.innerHTML = new Intl.NumberFormat('en-US',{
+      style: 'currency',
+      currency: 'USD'
+   }).format(valueCurrency)
+  
+}else if(currencyConverted.value == 'dolar' && currencyConverting.value == 'euro'){
+   valueEnd.innerHTML = new Intl.NumberFormat('de-DE', {
+      style:'currency',
+      currency:'EUR'
+   }).format(valueCurrency * euroTodayDolar)
+
+   valueconverted.innerHTML = new Intl.NumberFormat('en-US',{
+      style: 'currency',
+      currency: 'USD'
+   }).format(valueCurrency)
+  
+}else if(currencyConverted.value == 'dolar' && currencyConverting.value == 'dolar'){
+   valueEnd.innerHTML = new Intl.NumberFormat('en-US', {
+      style:'currency',
+      currency:'USD'
+   }).format(valueCurrency )
+
+   valueconverted.innerHTML = new Intl.NumberFormat('en-US',{
+      style: 'currency',
+      currency: 'USD'
+   }).format(valueCurrency)
+}
+
+//LIBRA
+if(currencyConverted.value == 'libra' && currencyConverting.value == 'real'){
+   valueEnd.innerHTML = new Intl.NumberFormat('pt-BR', {
+      style:'currency',
+      currency:'BRL'
+   }).format(valueCurrency * realTodayLibra)
+
+   valueconverted.innerHTML = new Intl.NumberFormat('en-UK',{
+      style: 'currency',
+      currency: 'GBP'
+   }).format(valueCurrency)
+  
+}else if(currencyConverted.value == 'libra' && currencyConverting.value == 'dolar'){
+   valueEnd.innerHTML = new Intl.NumberFormat('en-US', {
+      style:'currency',
+      currency:'USD'
+   }).format(valueCurrency * dolarTodayLibra)
+
+   valueconverted.innerHTML = new Intl.NumberFormat('en-UK',{
+      style: 'currency',
+      currency: 'GBP'
+   }).format(valueCurrency)
+  
+}else if(currencyConverted.value == 'libra' && currencyConverting.value == 'euro'){
+   valueEnd.innerHTML = new Intl.NumberFormat('de-DE', {
+      style:'currency',
+      currency:'EUR'
+   }).format(valueCurrency * euroTodayLibra)
+
+   valueconverted.innerHTML = new Intl.NumberFormat('en-UK',{
+      style: 'currency',
+      currency: 'GBP'
+   }).format(valueCurrency)
+  
+}else if(currencyConverted.value == 'libra' && currencyConverting.value == 'libra'){
+  valueEnd.innerHTML = new Intl.NumberFormat('en-UK',{
+      style: 'currency',
+      currency: 'GBP'
+   }).format(valueCurrency)
+
+   valueconverted.innerHTML = new Intl.NumberFormat('en-UK',{
+      style: 'currency',
+      currency: 'GBP'
+   }).format(valueCurrency)
    
-      }
-      if(currencyConverting.value == "libra"){
-         valueEnd.innerHTML= new Intl.NumberFormat("en-GB", {
-              style:"currency",
-              currency:"GBP"
-             }).format(valueCurrency )
-      
-         }
-         if(currencyConverting.value == "euro"){
-            valueEnd.innerHTML= new Intl.NumberFormat("de-DE", {
-                 style:"currency",
-                 currency:"EUR"
-                }).format(valueCurrency )
-         
-            }
+}
+
+//EURO
+if(currencyConverted.value == 'euro' && currencyConverting.value == 'real'){
+   valueEnd.innerHTML = new Intl.NumberFormat('pt-BR', {
+      style:'currency',
+      currency:'BRL'
+   }).format(valueCurrency * realTodayEuro)
+
+   valueconverted.innerHTML = new Intl.NumberFormat('de-DE',{
+      style: 'currency',
+      currency: 'EUR'
+   }).format(valueCurrency)
+  
+}else if(currencyConverted.value == 'euro' && currencyConverting.value == 'dolar'){
+   valueEnd.innerHTML = new Intl.NumberFormat('en-US', {
+      style:'currency',
+      currency:'USD'
+   }).format(valueCurrency * dolarTodayEuro)
+
+   valueconverted.innerHTML = new Intl.NumberFormat('de-DE',{
+      style: 'currency',
+      currency: 'EUR'
+   }).format(valueCurrency)
+  
+}else if(currencyConverted.value == 'euro' && currencyConverting.value == 'libra'){
+   valueEnd.innerHTML = new Intl.NumberFormat('en-UK', {
+      style:'currency',
+      currency:'GBP'
+   }).format(valueCurrency * libraTodayEuro)
+
+   valueconverted.innerHTML = new Intl.NumberFormat('de-DE',{
+      style: 'currency',
+      currency: 'EUR'
+   }).format(valueCurrency)
+  
+}else if(currencyConverted.value == 'euro' && currencyConverting.value == 'euro'){
+  valueEnd.innerHTML = new Intl.NumberFormat('de-DE',{
+      style: 'currency',
+      currency: 'EUR'
+   }).format(valueCurrency)
+
+   valueconverted.innerHTML = new Intl.NumberFormat('de-DE',{
+      style: 'currency',
+      currency: 'EUR'
+   }).format(valueCurrency)
 }
 
 
+
+
+}
+
+const imageConverting = document.querySelector ('.img-convertendo')
+const imageconverted = document.querySelector ('.img-converted')
+const nameCurrency = document.querySelector('.currency-convertendo')
+const nameCurrencyConverted = document.querySelector ('.currency')
+
+function changeImageconverting(){
+   let valuetoconverting = document.querySelector('input')
+
+   if(currencyConverted.value == 'dolar'){
+     imageConverting.src = './img/USA.png'
+     nameCurrency.innerHTML = '$ Dolar Americano '
+     valuetoconverting.placeholder  = '$ 0,00'
+     
+
+   }else if(currencyConverted.value == 'euro'){
+      imageConverting.src = './img/euro.png'
+      nameCurrency.innerHTML = '€ Euro '
+      valuetoconverting.placeholder  = '€ 0,00'
+
+   }else if(currencyConverted.value == 'libra'){
+      imageConverting.src = './img/libra.png'
+      nameCurrency.innerHTML = '£ Libra '
+      valuetoconverting.placeholder  = '£ 0,00'
+
+   }else if(currencyConverted.value == 'real'){
+   imageConverting.src = './img/real.png'
+   nameCurrency.innerHTML = 'R$ Real Brasileiro '
+   valuetoconverting.placeholder  = 'R$ 0,00'
+
+}
+
+buttonConverted()
+}
+
+function changeImageConverted(){
+console.log('mudou')
+   if(currencyConverting.value == 'real'){
+    imageconverted.src = './img/real.png'
+    nameCurrencyConverted.innerHTML = 'R$ Real Brasileiro '
+
+   }else if(currencyConverting.value == 'dolar'){
+      imageconverted.src = './img/USA.png'
+      nameCurrencyConverted.innerHTML = '$ Dolar Americano '
+
+   }else if(currencyConverting.value == 'libra'){
+      imageconverted.src = './img/libra.png'
+      nameCurrencyConverted.innerHTML = '£ Libra '
+
+   }else if(currencyConverting.value == 'euro'){
+      imageconverted.src = './img/euro.png'
+      nameCurrencyConverted.innerHTML = '€ Euro '
+   }
+
+   buttonConverted()
+}
+
+
+currencyConverted.addEventListener('change', changeImageconverting)
+
+currencyConverting.addEventListener('change', changeImageConverted )
 
 
 
