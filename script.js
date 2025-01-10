@@ -10,31 +10,38 @@ conversor.addEventListener('click', buttonConverted)
 
 
 
-const dolarTodayReal = 6.27
-const euroTodayReal = 6.5
-const libraTodayReal = 7.9
+
+const libraTodayReal = 7.43
 
 
-const realTodayDolar = 6.27
+const realTodayDolar = 6.07
 const euroTodayDolar = 0.97
-const libraTodayDolar = 0.79
+const libraTodayDolar = 0.81
 
 
-const dolarTodayEuro = 1.04
-const realTodayEuro = 6.5
-const libraTodayEuro = 0.82
+const dolarTodayEuro = 1.02
+const realTodayEuro = 6.27
+const libraTodayEuro = 0.83
 
 
-const dolarTodayLibra = 1.26
-const euroTodayLibra = 1.21
-const realTodayLibra = 7.89
+const dolarTodayLibra = 1.23
+const euroTodayLibra = 1.19
+const realTodayLibra = 7.49
 
 
 
 
 
-function buttonConverted(){
+async function buttonConverted() {
+
 let valueCurrency = document.querySelector('input').value
+
+const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL").then(response=> response.json())
+
+console.log(data)
+
+const dolarTodayReal = data.USDBRL.high
+const euroTodayReal = data.EURBRL.high
 
 //REAL
 if(currencyConverted.value == 'real' && currencyConverting.value == 'dolar'){
