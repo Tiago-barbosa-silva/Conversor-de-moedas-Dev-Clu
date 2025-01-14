@@ -11,22 +11,22 @@ conversor.addEventListener('click', buttonConverted)
 
 
 
-const libraTodayReal = 7.43
+const libraTodayReal = 7.37
 
 
-const realTodayDolar = 6.07
+const realTodayDolar = 6.04
 const euroTodayDolar = 0.97
 const libraTodayDolar = 0.81
 
 
 const dolarTodayEuro = 1.02
-const realTodayEuro = 6.27
-const libraTodayEuro = 0.83
+const realTodayEuro = 6.22
+const libraTodayEuro = 0.84
 
 
-const dolarTodayLibra = 1.23
-const euroTodayLibra = 1.19
-const realTodayLibra = 7.49
+const dolarTodayLibra = 1.21
+const euroTodayLibra = 1.18
+const realTodayLibra = 7.37
 
 
 
